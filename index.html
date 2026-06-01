@@ -1,138 +1,2599 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kiran Kalyankumar | Software Engineering Lead</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <script src="https://unpkg.com/framer-motion@9/dist/framer-motion.min.js"></script>
+  <title>Kiran KalyanKumar | Engineering Lead & AI Architect</title>
+  <meta name="description" content="Software Engineering Lead/Manager at Elsevier. 12+ years in frontend engineering, architecture, and AI-augmented development. Amsterdam, Netherlands.">
+  <meta property="og:title" content="Kiran KalyanKumar | Engineering Lead & AI Architect">
+  <meta property="og:description" content="The manager who still codes. 12+ years across frontend engineering, architecture, and engineering leadership.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
-    .fade-in {
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ── Dark theme (default) ── */
+    :root,
+    html[data-theme="dark"] {
+      --nav-bg: rgba(5, 8, 16, 0.9);
+      --nav-text: rgba(148, 163, 184, 0.9);
+      --bg-primary: #050810;
+      --bg-secondary: #090d1a;
+      --bg-card: rgba(13, 18, 36, 0.8);
+      --bg-card-solid: #0d1224;
+      --accent-cyan: #00d4ff;
+      --accent-cyan-dim: rgba(0, 212, 255, 0.15);
+      --accent-purple: #7c3aed;
+      --accent-purple-dim: rgba(124, 58, 237, 0.15);
+      --accent-purple-light: #a855f7;
+      --text-primary: #f1f5f9;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+      --border-subtle: rgba(0, 212, 255, 0.08);
+      --border-glow: rgba(0, 212, 255, 0.25);
+      --color-success: #10b981;
+      --color-warn: #f59e0b;
+      --color-info: #60a5fa;
+      --color-pink: #e879f9;
+      --font-mono: 'JetBrains Mono', monospace;
+      --font-sans: 'Inter', sans-serif;
+      --radius: 12px;
+      --radius-lg: 20px;
+    }
+
+    /* ── Light theme ── */
+    html[data-theme="light"] {
+      --nav-bg: rgba(255, 255, 255, 0.96);
+      --nav-text: #1e293b;
+      --bg-primary: #f0f4ff;
+      --bg-secondary: #e8eeff;
+      --bg-card: #ffffff;
+      --bg-card-solid: #ffffff;
+      --accent-cyan: #0284c7;
+      --accent-cyan-dim: rgba(2, 132, 199, 0.1);
+      --accent-purple: #7c3aed;
+      --accent-purple-dim: rgba(124, 58, 237, 0.1);
+      --accent-purple-light: #6d28d9;
+      --text-primary: #0f172a;
+      --text-secondary: #1e293b;
+      --text-muted: #64748b;
+      --border-subtle: rgba(2, 132, 199, 0.12);
+      --border-glow: rgba(2, 132, 199, 0.35);
+      --color-success: #059669;
+      --color-warn: #d97706;
+      --color-info: #2563eb;
+      --color-pink: #a21caf;
+    }
+
+    html[data-theme="light"] body::before {
+      background-image:
+        linear-gradient(rgba(2, 132, 199, 0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(2, 132, 199, 0.07) 1px, transparent 1px);
+    }
+
+    html[data-theme="light"] body::after {
+      background: radial-gradient(circle, rgba(124, 58, 237, 0.1) 0%, transparent 70%);
+    }
+
+    html[data-theme="light"] .orb-2 {
+      background: radial-gradient(circle, rgba(2, 132, 199, 0.1) 0%, transparent 70%);
+    }
+
+    /* Light mode card elevation */
+    html[data-theme="light"] .metric-card,
+    html[data-theme="light"] .exp-card,
+    html[data-theme="light"] .skill-group,
+    html[data-theme="light"] .project-card,
+    html[data-theme="light"] .contact-link,
+    html[data-theme="light"] .highlight-item {
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 6px 24px rgba(0,0,0,0.06), 0 0 0 1px rgba(2,132,199,0.08);
+    }
+
+    html[data-theme="light"] .exp-card:hover,
+    html[data-theme="light"] .project-card:hover {
+      box-shadow: 0 8px 32px rgba(2, 132, 199, 0.15), 0 1px 3px rgba(0,0,0,0.06);
+    }
+
+    html[data-theme="light"] .contact-card {
+      box-shadow: 0 4px 32px rgba(2, 132, 199, 0.12);
+    }
+
+    /* Dark mode card depth */
+    html[data-theme="dark"] .metric-card,
+    html[data-theme="dark"] .exp-card,
+    html[data-theme="dark"] .skill-group,
+    html[data-theme="dark"] .project-card,
+    html[data-theme="dark"] .highlight-item {
+      box-shadow: 0 2px 8px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.04);
+    }
+
+    /* Section rhythm */
+    #about { position: relative; }
+    #about::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 0%, rgba(0,212,255,0.025) 50%, transparent 100%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    #about > * { position: relative; z-index: 1; }
+
+    #experience { position: relative; }
+    #experience::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 0%, rgba(124,58,237,0.03) 50%, transparent 100%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    #experience > * { position: relative; z-index: 1; }
+
+    html[data-theme="light"] #about::after {
+      background: linear-gradient(180deg, transparent 0%, rgba(2,132,199,0.05) 50%, transparent 100%);
+    }
+    html[data-theme="light"] #experience::after {
+      background: linear-gradient(180deg, transparent 0%, rgba(124,58,237,0.05) 50%, transparent 100%);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Background grid — echoes the blueprint paper in the portrait */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0, 212, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 212, 255, 0.05) 1px, transparent 1px);
+      background-size: 44px 44px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Ambient glow orbs */
+    body::after {
+      content: '';
+      position: fixed;
+      top: -20%;
+      right: -10%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(124, 58, 237, 0.06) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .orb-2 {
+      position: fixed;
+      bottom: -20%;
+      left: -10%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(0, 212, 255, 0.05) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── Navigation ── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 0 2rem;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--nav-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-subtle);
+      transition: background 0.3s ease, border-color 0.3s ease;
+    }
+
+    html[data-theme="light"] nav {
+      box-shadow: 0 1px 12px rgba(0, 0, 0, 0.06);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--nav-text);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: color 0.2s;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--accent-cyan);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover { color: var(--accent-cyan); }
+    .nav-links a:hover::after { width: 100%; }
+
+    .nav-cta {
+      font-size: 0.8rem;
+      font-family: var(--font-mono);
+      padding: 0.4rem 1rem;
+      border: 1px solid var(--accent-cyan);
+      border-radius: 6px;
+      color: var(--accent-cyan);
+      text-decoration: none;
+      transition: all 0.2s;
+      white-space: nowrap;
+      background: var(--accent-cyan-dim);
+    }
+
+    .nav-cta:hover {
+      background: var(--accent-cyan);
+      color: #fff;
+      box-shadow: 0 0 15px rgba(0, 212, 255, 0.25);
+    }
+
+    html[data-theme="light"] .nav-cta {
+      background: transparent;
+    }
+
+    html[data-theme="light"] .nav-cta:hover {
+      background: var(--accent-cyan);
+      color: #fff;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-shrink: 0;
+    }
+
+    .theme-toggle {
+      background: transparent;
+      border: 1px solid var(--border-glow);
+      border-radius: 8px;
+      color: var(--nav-text);
+      width: 36px;
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: all 0.2s;
+      flex-shrink: 0;
+    }
+
+    .theme-toggle:hover {
+      border-color: var(--accent-cyan);
+      color: var(--accent-cyan);
+      background: var(--accent-cyan-dim);
+    }
+
+    html[data-theme="dark"] .icon-moon { display: none; }
+    html[data-theme="light"] .icon-sun { display: none; }
+
+    .btn-download {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.75rem;
+      border: 1px solid var(--color-success);
+      color: var(--color-success);
+      font-weight: 600;
+      font-size: 0.875rem;
+      border-radius: 8px;
+      text-decoration: none;
+      cursor: pointer;
+      background: transparent;
+      transition: all 0.3s ease;
+      font-family: var(--font-sans);
+    }
+
+    .btn-download:hover {
+      background: rgba(16, 185, 129, 0.1);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(16, 185, 129, 0.2);
+    }
+
+    html[data-theme="light"] .btn-download:hover {
+      background: rgba(5, 150, 105, 0.08);
+      box-shadow: 0 4px 20px rgba(5, 150, 105, 0.15);
+    }
+
+    .nav-download {
+      font-size: 0.8rem;
+      font-family: var(--font-mono);
+      padding: 0.4rem 0.75rem;
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      border-radius: 6px;
+      color: var(--color-success);
+      background: none;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .nav-download:hover {
+      background: rgba(16, 185, 129, 0.1);
+    }
+
+    /* ── Main layout ── */
+    main { position: relative; z-index: 1; }
+
+    section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 6rem 2rem;
+    }
+
+    /* ── Hero ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-top: 120px;
+      padding-bottom: 4rem;
+      position: relative;
+    }
+
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 65% 90% at 105% 50%, rgba(124, 58, 237, 0.13) 0%, transparent 65%),
+        radial-gradient(ellipse 50% 70% at -5% 60%, rgba(0, 212, 255, 0.09) 0%, transparent 65%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    html[data-theme="light"] #hero::before {
+      background:
+        radial-gradient(ellipse 65% 90% at 105% 50%, rgba(124, 58, 237, 0.09) 0%, transparent 65%),
+        radial-gradient(ellipse 50% 70% at -5% 60%, rgba(2, 132, 199, 0.08) 0%, transparent 65%);
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 3rem;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--accent-cyan);
+      background: var(--accent-cyan-dim);
+      border: 1px solid rgba(0, 212, 255, 0.2);
+      border-radius: 100px;
+      padding: 0.3rem 0.9rem;
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.05em;
+    }
+
+    .hero-tag::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent-cyan);
+      box-shadow: 0 0 8px var(--accent-cyan);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .hero-name {
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.5rem;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, var(--accent-cyan) 0%, var(--accent-purple-light) 60%, var(--color-pink) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .typewriter-wrapper {
+      font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+      font-family: var(--font-mono);
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+      min-height: 2em;
+    }
+
+    #typewriter-text {
+      color: var(--accent-cyan);
+      border-right: 2px solid var(--accent-cyan);
+      padding-right: 3px;
+      animation: blink 0.75s step-end infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { border-color: var(--accent-cyan); }
+      50% { border-color: transparent; }
+    }
+
+    .hero-desc {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      max-width: 580px;
+      line-height: 1.7;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-location {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+
+    .hero-location span { color: var(--text-secondary); }
+
+    .hero-ctas {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.75rem;
+      background: linear-gradient(135deg, var(--accent-cyan) 0%, var(--accent-purple-light) 100%);
+      color: #000;
+      font-weight: 700;
+      font-size: 0.875rem;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      letter-spacing: 0.02em;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(0, 212, 255, 0.35);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.75rem;
+      border: 1px solid var(--border-glow);
+      color: var(--text-primary);
+      font-weight: 600;
+      font-size: 0.875rem;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      background: transparent;
+    }
+
+    .btn-secondary:hover {
+      background: var(--accent-cyan-dim);
+      border-color: var(--accent-cyan);
+      color: var(--accent-cyan);
+      transform: translateY(-2px);
+    }
+
+    .hero-socials {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .hero-socials a {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: color 0.2s;
+    }
+
+    .hero-socials a:hover { color: var(--accent-cyan); }
+
+    /* ── Hero portrait photo ── */
+    .hero-photo {
+      position: relative;
+      width: 100%;
+      height: 400px;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow:
+        0 40px 80px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(0, 212, 255, 0.25),
+        0 0 40px rgba(0, 212, 255, 0.08);
+      flex-shrink: 0;
+      transition: box-shadow 0.4s ease, transform 0.4s ease;
+    }
+
+    .hero-photo:hover {
+      transform: translateY(-6px);
+      box-shadow:
+        0 56px 100px rgba(0, 0, 0, 0.55),
+        0 0 0 1px rgba(0, 212, 255, 0.4),
+        0 0 60px rgba(0, 212, 255, 0.12);
+    }
+
+    .hero-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 8%;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+
+    .hero-photo:hover img { transform: scale(1.04); }
+
+    .hero-photo-overlay {
+      position: absolute;
+      inset: 0;
+      background: transparent;
+      pointer-events: none;
+    }
+
+    html[data-theme="light"] .hero-photo {
+      box-shadow:
+        0 30px 60px rgba(0, 0, 0, 0.16),
+        0 0 0 1px rgba(2, 132, 199, 0.25),
+        0 0 50px rgba(124, 58, 237, 0.08);
+    }
+
+    html[data-theme="light"] .hero-photo:hover {
+      box-shadow:
+        0 40px 80px rgba(0, 0, 0, 0.2),
+        0 0 0 1px rgba(2, 132, 199, 0.35),
+        0 0 70px rgba(124, 58, 237, 0.12);
+    }
+
+    html[data-theme="light"] .hero-photo-overlay {
+      background: linear-gradient(
+        to top,
+        rgba(15, 23, 42, 0.88) 0%,
+        rgba(15, 23, 42, 0.3) 28%,
+        transparent 52%
+      );
+    }
+
+    /* Blueprint photo: soft vignette in dark mode so white paper edges fade into bg */
+    html[data-theme="dark"] .hero-photo-overlay {
+      background: radial-gradient(ellipse at center, transparent 42%, rgba(5, 8, 16, 0.7) 100%);
+    }
+
+    /* ── Section headers ── */
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      color: var(--accent-cyan);
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+
+    .section-title .accent { color: var(--accent-cyan); }
+
+    .section-subtitle {
+      color: var(--text-secondary);
+      max-width: 600px;
+      line-height: 1.7;
+      margin-bottom: 3rem;
+    }
+
+    .divider {
+      width: 60px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
+      border-radius: 2px;
+      margin-bottom: 1rem;
+    }
+
+    /* ── Impact metrics ── */
+    #metrics { padding-top: 2rem; padding-bottom: 6rem; }
+
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+
+    .metric-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .metric-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
       opacity: 0;
-      animation: fadeIn 1s ease-in forwards;
+      transition: opacity 0.3s;
     }
-    @keyframes fadeIn {
-      to {
-        opacity: 1;
+
+    .metric-card:hover { border-color: var(--border-glow); transform: translateY(-4px); }
+    .metric-card:hover::before { opacity: 1; }
+
+    .metric-number {
+      font-family: var(--font-mono);
+      font-size: 2.5rem;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+
+    .metric-card:nth-child(1) .metric-number { color: var(--accent-cyan); }
+    .metric-card:nth-child(2) .metric-number { color: var(--accent-purple-light); }
+    .metric-card:nth-child(3) .metric-number { color: var(--color-success); }
+    .metric-card:nth-child(4) .metric-number { color: var(--color-warn); }
+
+    .metric-label {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      font-weight: 500;
+      line-height: 1.4;
+    }
+
+    .metric-sub {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      margin-top: 0.25rem;
+    }
+
+    /* ── About ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .about-text p {
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-bottom: 1.25rem;
+    }
+
+    .about-text strong { color: var(--text-primary); }
+
+    .about-callout {
+      background: linear-gradient(135deg, rgba(0, 212, 255, 0.06) 0%, rgba(124, 58, 237, 0.06) 100%);
+      border: 1px solid var(--border-glow);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      line-height: 1.5;
+      position: relative;
+    }
+
+    .about-callout::before {
+      content: '"';
+      font-size: 4rem;
+      color: var(--accent-cyan);
+      opacity: 0.2;
+      position: absolute;
+      top: -0.5rem;
+      left: 1rem;
+      font-family: Georgia, serif;
+      line-height: 1;
+    }
+
+    .about-highlights {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .highlight-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1rem 1.25rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius);
+      transition: all 0.2s;
+      backdrop-filter: blur(10px);
+    }
+
+    .highlight-item:hover {
+      border-color: var(--border-glow);
+      background: rgba(0, 212, 255, 0.04);
+    }
+
+    .highlight-icon {
+      font-size: 1.4rem;
+      flex-shrink: 0;
+      width: 2.5rem;
+      text-align: center;
+    }
+
+    .highlight-content strong {
+      display: block;
+      font-size: 0.9rem;
+      color: var(--text-primary);
+      margin-bottom: 0.2rem;
+    }
+
+    .highlight-content span {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* ── Skills ── */
+    #skills { background: transparent; }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .skill-group {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      backdrop-filter: blur(10px);
+      transition: border-color 0.3s;
+    }
+
+    .skill-group:hover { border-color: var(--border-glow); }
+
+    .skill-group-label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .skill-group:nth-child(1) .skill-group-label { color: var(--accent-cyan); }
+    .skill-group:nth-child(2) .skill-group-label { color: var(--accent-purple-light); }
+    .skill-group:nth-child(3) .skill-group-label { color: var(--color-success); }
+    .skill-group:nth-child(4) .skill-group-label { color: var(--color-warn); }
+    .skill-group:nth-child(5) .skill-group-label { color: var(--color-pink); }
+    .skill-group:nth-child(6) .skill-group-label { color: var(--accent-cyan); }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .skill-tag {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      padding: 0.3rem 0.65rem;
+      border-radius: 6px;
+      border: 1px solid;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+
+    .skill-group:nth-child(1) .skill-tag {
+      color: var(--accent-cyan);
+      border-color: rgba(0, 212, 255, 0.25);
+      background: rgba(0, 212, 255, 0.06);
+    }
+    .skill-group:nth-child(1) .skill-tag:hover { background: rgba(0, 212, 255, 0.15); }
+
+    .skill-group:nth-child(2) .skill-tag {
+      color: var(--accent-purple-light);
+      border-color: rgba(168, 85, 247, 0.25);
+      background: rgba(168, 85, 247, 0.06);
+    }
+    .skill-group:nth-child(2) .skill-tag:hover { background: rgba(168, 85, 247, 0.15); }
+
+    .skill-group:nth-child(3) .skill-tag {
+      color: var(--color-success);
+      border-color: rgba(16, 185, 129, 0.25);
+      background: rgba(16, 185, 129, 0.06);
+    }
+    .skill-group:nth-child(3) .skill-tag:hover { background: rgba(16, 185, 129, 0.15); }
+
+    .skill-group:nth-child(4) .skill-tag {
+      color: var(--color-warn);
+      border-color: rgba(245, 158, 11, 0.25);
+      background: rgba(245, 158, 11, 0.06);
+    }
+    .skill-group:nth-child(4) .skill-tag:hover { background: rgba(245, 158, 11, 0.15); }
+
+    .skill-group:nth-child(5) .skill-tag {
+      color: var(--color-pink);
+      border-color: rgba(232, 121, 249, 0.25);
+      background: rgba(232, 121, 249, 0.06);
+    }
+    .skill-group:nth-child(5) .skill-tag:hover { background: rgba(232, 121, 249, 0.15); }
+
+    .skill-group:nth-child(6) .skill-tag {
+      color: var(--color-info);
+      border-color: rgba(96, 165, 250, 0.25);
+      background: rgba(96, 165, 250, 0.06);
+    }
+    .skill-group:nth-child(6) .skill-tag:hover { background: rgba(96, 165, 250, 0.15); }
+
+    /* ── Experience ── */
+    .experience-timeline {
+      position: relative;
+      padding-left: 2.5rem;
+    }
+
+    .exp-item {
+      position: relative;
+      margin-bottom: 2rem;
+    }
+
+    /* Dot on the timeline */
+    .exp-item::before {
+      content: '';
+      position: absolute;
+      left: -1.45rem;
+      top: 0.7rem;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--accent-cyan);
+      box-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+      border: 2px solid var(--bg-primary);
+      z-index: 1;
+    }
+
+    /* Connector line — only between items, never past the last one */
+    .exp-item:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      left: calc(-1.45rem + 5px);
+      top: calc(0.7rem + 14px);
+      bottom: -2rem;
+      width: 1px;
+      background: linear-gradient(to bottom, var(--accent-cyan), var(--accent-purple));
+      opacity: 0.4;
+    }
+
+    .exp-item.current::before {
+      animation: pulse-dot 2s infinite;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { box-shadow: 0 0 8px rgba(0, 212, 255, 0.6); }
+      50% { box-shadow: 0 0 18px rgba(0, 212, 255, 0.9), 0 0 28px rgba(0, 212, 255, 0.3); }
+    }
+
+    .exp-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .exp-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 3px;
+      background: linear-gradient(to bottom, var(--accent-cyan), var(--accent-purple));
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .exp-card:hover { border-color: var(--border-glow); transform: translateX(4px); }
+    .exp-card:hover::before { opacity: 1; }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .exp-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .exp-company {
+      font-size: 0.9rem;
+      color: var(--accent-cyan);
+      font-weight: 500;
+      margin-top: 0.15rem;
+    }
+
+    .exp-meta {
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    .exp-period {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      background: rgba(255,255,255,0.04);
+      padding: 0.25rem 0.6rem;
+      border-radius: 100px;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .exp-location {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 0.3rem;
+      text-align: right;
+    }
+
+    .exp-bullets {
+      list-style: none;
+      margin-top: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .exp-bullets li {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      padding-left: 1.25rem;
+      position: relative;
+      line-height: 1.6;
+    }
+
+    .exp-bullets li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--accent-cyan);
+      font-size: 0.75rem;
+    }
+
+    .exp-bullets li strong { color: var(--text-primary); }
+
+    .exp-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      padding: 0.2rem 0.5rem;
+      border-radius: 100px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-left: 0.5rem;
+    }
+
+    .badge-current {
+      background: rgba(0, 212, 255, 0.1);
+      color: var(--accent-cyan);
+      border: 1px solid rgba(0, 212, 255, 0.3);
+    }
+
+    .exp-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 1.25rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .tech-pill {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      padding: 0.2rem 0.5rem;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border-subtle);
+      border-radius: 4px;
+      color: var(--text-muted);
+    }
+
+    /* ── Projects ── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card.featured {
+      grid-column: span 2;
+      background: linear-gradient(135deg, rgba(0, 212, 255, 0.04) 0%, rgba(124, 58, 237, 0.04) 100%);
+      border-color: rgba(0, 212, 255, 0.2);
+    }
+
+    .project-card:hover { border-color: var(--border-glow); transform: translateY(-4px); }
+
+    .project-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent-cyan), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .project-card:hover::after { opacity: 1; }
+
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 0.75rem;
+    }
+
+    .project-icon {
+      font-size: 1.6rem;
+    }
+
+    .project-links {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .project-link {
+      font-size: 0.75rem;
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+      text-decoration: none;
+      padding: 0.25rem 0.6rem;
+      border: 1px solid var(--border-subtle);
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+
+    .project-link:hover {
+      color: var(--accent-cyan);
+      border-color: var(--border-glow);
+    }
+
+    .project-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .project-desc {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 1rem;
+      flex: 1;
+    }
+
+    .project-stats {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      padding: 0.75rem;
+      background: rgba(255,255,255,0.03);
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+
+    .project-stat {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+
+    .project-stat-value {
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--accent-cyan);
+    }
+
+    .project-stat-label {
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .project-tag {
+      font-size: 0.65rem;
+      font-family: var(--font-mono);
+      padding: 0.2rem 0.5rem;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border-subtle);
+      border-radius: 4px;
+      color: var(--text-muted);
+    }
+
+    /* ── Achievements ── */
+    .achievements-table-wrapper {
+      overflow-x: auto;
+      border-radius: var(--radius);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .achievements-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.875rem;
+      background: var(--bg-card);
+      backdrop-filter: blur(10px);
+    }
+
+    .achievements-table thead th {
+      padding: 1rem 1.25rem;
+      text-align: left;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent-cyan);
+      border-bottom: 1px solid var(--border-glow);
+      background: rgba(0, 212, 255, 0.04);
+    }
+
+    .achievements-table tbody td {
+      padding: 0.875rem 1.25rem;
+      color: var(--text-secondary);
+      border-bottom: 1px solid var(--border-subtle);
+      vertical-align: top;
+    }
+
+    .achievements-table tbody tr:last-child td { border-bottom: none; }
+
+    .achievements-table tbody tr:hover td {
+      background: rgba(0, 212, 255, 0.03);
+    }
+
+    .achievements-table .metric-value {
+      font-family: var(--font-mono);
+      font-weight: 700;
+      color: var(--accent-cyan);
+      white-space: nowrap;
+    }
+
+    .achievements-table .achievement-name {
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    /* ── Contact ── */
+    #contact { padding-bottom: 8rem; }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 1.25rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius);
+      text-decoration: none;
+      color: var(--text-secondary);
+      font-size: 0.875rem;
+      transition: all 0.25s;
+      backdrop-filter: blur(10px);
+    }
+
+    .contact-link:hover {
+      border-color: var(--border-glow);
+      color: var(--text-primary);
+      transform: translateX(4px);
+    }
+
+    .contact-link-icon {
+      width: 2.25rem;
+      height: 2.25rem;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .contact-link-icon.email { background: rgba(0, 212, 255, 0.1); }
+    .contact-link-icon.github { background: rgba(168, 85, 247, 0.1); }
+    .contact-link-icon.linkedin { background: rgba(59, 130, 246, 0.1); }
+    .contact-link-icon.location { background: rgba(16, 185, 129, 0.1); }
+
+    .contact-link-content strong {
+      display: block;
+      font-weight: 600;
+      color: var(--text-primary);
+      font-size: 0.875rem;
+    }
+
+    .contact-link-content span {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .contact-card {
+      background: linear-gradient(135deg, rgba(0, 212, 255, 0.06) 0%, rgba(124, 58, 237, 0.06) 100%);
+      border: 1px solid var(--border-glow);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+    }
+
+    .contact-card h3 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+    }
+
+    .contact-card p {
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+    }
+
+    .target-roles {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .role-tag {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.65rem 1rem;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+    }
+
+    .role-tag .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .role-tag .dot.high { background: var(--accent-cyan); box-shadow: 0 0 6px var(--accent-cyan); }
+    .role-tag .dot.medium { background: var(--accent-purple-light); box-shadow: 0 0 6px var(--accent-purple-light); }
+    .role-tag .dot.low { background: var(--text-muted); }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--border-subtle);
+      padding: 2rem;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    footer p {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    footer a {
+      color: var(--accent-cyan);
+      text-decoration: none;
+    }
+
+    /* ── Scroll animations ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-photo { display: none; }
+      .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-grid { grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: 1fr 1fr; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .project-card.featured { grid-column: span 1; }
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      nav { padding: 0 1rem; }
+      .nav-links { display: none; }
+      section { padding: 4rem 1.25rem; }
+      .metrics-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .hero-name { font-size: 2.5rem; }
+    }
+
+    /* Mobile nav toggle */
+    .nav-mobile-toggle {
+      display: none;
+      background: none;
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      padding: 0.4rem 0.75rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    @media (max-width: 600px) {
+      .nav-mobile-toggle { display: flex; align-items: center; }
+      .nav-download { display: none; }
+    }
+
+    /* ── Print / Resume export ── */
+    #print-resume { display: none; }
+
+    @media print {
+      @page { margin: 15mm 18mm 15mm 18mm; size: A4; }
+
+      /* Hide the entire website, show only the resume div */
+      body > *:not(#print-resume) { display: none !important; }
+      body { background: #fff !important; margin: 0; padding: 0; }
+
+      #print-resume {
+        display: block;
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+        font-size: 9.5pt;
+        color: #1a1a2e;
+        line-height: 1.45;
+        max-width: 100%;
       }
-    }
-    .hover-scale {
-      transition: transform 0.3s ease;
-    }
-    .hover-scale:hover {
-      transform: scale(1.05);
+
+      /* ── Resume header ── */
+      .pr-header {
+        border-bottom: 2pt solid #1a1a2e;
+        padding-bottom: 8pt;
+        margin-bottom: 10pt;
+      }
+      .pr-name {
+        font-size: 22pt;
+        font-weight: 900;
+        letter-spacing: -0.03em;
+        color: #0f172a;
+        line-height: 1;
+        margin-bottom: 3pt;
+      }
+      .pr-role {
+        font-size: 11pt;
+        font-weight: 600;
+        color: #0284c7;
+        margin-bottom: 5pt;
+      }
+      .pr-contact {
+        font-size: 8.5pt;
+        color: #475569;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0 16pt;
+      }
+      .pr-contact a { color: #475569; text-decoration: none; }
+
+      /* ── Section headers ── */
+      .pr-section { margin-bottom: 10pt; }
+      .pr-section-title {
+        font-size: 9pt;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: #0284c7;
+        border-bottom: 0.5pt solid #cbd5e1;
+        padding-bottom: 2pt;
+        margin-bottom: 6pt;
+      }
+
+      /* ── Summary ── */
+      .pr-summary {
+        font-size: 9pt;
+        color: #334155;
+        line-height: 1.5;
+      }
+
+      /* ── Skills ── */
+      .pr-skills {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4pt 16pt;
+        font-size: 8.5pt;
+        color: #334155;
+      }
+      .pr-skills strong { color: #0f172a; }
+
+      /* ── Experience ── */
+      .pr-exp-item {
+        margin-bottom: 8pt;
+        page-break-inside: avoid;
+      }
+      .pr-exp-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 8pt;
+        margin-bottom: 2pt;
+      }
+      .pr-exp-title {
+        font-size: 10pt;
+        font-weight: 700;
+        color: #0f172a;
+      }
+      .pr-exp-company {
+        font-size: 9pt;
+        color: #0284c7;
+        font-weight: 500;
+      }
+      .pr-exp-period {
+        font-size: 8pt;
+        color: #64748b;
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+      .pr-exp-bullets {
+        list-style: none;
+        padding: 0;
+        margin: 3pt 0 0 0;
+      }
+      .pr-exp-bullets li {
+        font-size: 8.5pt;
+        color: #334155;
+        padding-left: 10pt;
+        position: relative;
+        margin-bottom: 1.5pt;
+        line-height: 1.4;
+      }
+      .pr-exp-bullets li::before {
+        content: '•';
+        position: absolute;
+        left: 2pt;
+        color: #0284c7;
+      }
+      .pr-exp-bullets li strong { color: #0f172a; }
+
+      /* ── Projects / Open Source ── */
+      .pr-projects {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4pt 16pt;
+        font-size: 8.5pt;
+      }
+      .pr-project-name { font-weight: 700; color: #0f172a; }
+      .pr-project-desc { color: #334155; }
+
+      /* ── Education ── */
+      .pr-edu {
+        display: flex;
+        justify-content: space-between;
+        font-size: 9pt;
+      }
+      .pr-edu strong { color: #0f172a; }
+      .pr-edu span { color: #64748b; }
     }
   </style>
 </head>
-<body class="bg-gray-900 text-gray-300 font-sans">
-  <!-- Header Section -->
-  <header class="bg-gray-800 p-6">
-    <div class="max-w-4xl mx-auto">
-      <h1 class="text-4xl font-bold text-white fade-in">Kiran Kalyankumar</h1>
-      <p class="text-xl mt-2 fade-in">Seasoned Software Engineering Lead | Expert in Frontend Development</p>
+<!-- Last updated: 2026-05-31 | Sync master-profile.md after any content change here -->
+<body>
+  <div class="orb-2"></div>
+
+  <!-- Navigation -->
+  <nav>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="./assets/Kiran_KalyanKumar_Resume.pdf" download="Kiran_KalyanKumar_Resume.pdf" class="nav-download">↓ Resume</a>
+      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle light/dark theme">
+        <span class="icon-sun">☀</span>
+        <span class="icon-moon">☾</span>
+      </button>
+      <a href="mailto:kiransinbox1@gmail.com" class="nav-cta">Hire Me</a>
     </div>
-  </header>
+  </nav>
 
-  <!-- Main Content -->
-  <main class="max-w-4xl mx-auto p-6">
-    <!-- About Me Section -->
-    <section id="about" class="mb-10 fade-in">
-      <h2 class="text-3xl font-bold text-white">About Me</h2>
-      <p class="mt-4">
-        I bring over <strong>11+ years of experience</strong> in frontend development, architecture, and engineering management. 
-        My expertise spans technologies like <strong>React, TypeScript, GraphQL, and AWS</strong>. I’m passionate about crafting 
-        high-performance web and mobile applications while fostering innovation within teams.
-      </p>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="mb-10 fade-in">
-      <h2 class="text-3xl font-bold text-white">Technical Skills</h2>
-      <div class="mt-4 flex flex-wrap gap-4">
-        <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React">
-        <img src="https://img.shields.io/badge/TypeScript-0078D4?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript">
-        <img src="https://img.shields.io/badge/GraphQL-E10098?style=for-the-badge&logo=graphql&logoColor=white" alt="GraphQL">
-        <img src="https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white" alt="AWS">
-        <img src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white" alt="Node.js">
-        <img src="https://img.shields.io/badge/TailwindCSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="TailwindCSS">
-        <img src="https://img.shields.io/badge/Jest-C21325?style=for-the-badge&logo=jest&logoColor=white" alt="Jest">
-      </div>
-    </section>
-
-    <!-- Experience Section -->
-    <section id="experience" class="mb-10 fade-in">
-      <h2 class="text-3xl font-bold text-white">Experience</h2>
-      <div class="mt-4 space-y-6">
-        <!-- Experience Card 1 -->
-        <div class="p-6 bg-gray-800 rounded-lg hover-scale">
-          <h3 class="text-2xl font-bold text-white">Software Engineering Lead/Manager</h3>
-          <p class="text-gray-400">Elsevier | Amsterdam, Netherlands | 10/2023 - Present</p>
-          <ul class="mt-4 list-disc list-inside">
-            <li>Lead a multidisciplinary team of backend, frontend, QA engineers, and UX designers.</li>
-            <li>Oversee architecture and strategic product planning, ensuring alignment with business goals.</li>
-            <li>Pioneer cost-optimization initiatives within AWS environments.</li>
-          </ul>
+  <main>
+    <!-- Hero -->
+    <section id="hero">
+      <div class="hero-inner">
+        <div>
+          <div class="hero-tag">Based in Amsterdam · Open to Global Opportunities</div>
+          <h1 class="hero-name">
+            Kiran<br>
+            <span class="gradient-text">KalyanKumar</span>
+          </h1>
+          <div class="typewriter-wrapper">
+            &gt;&nbsp;<span id="typewriter-text"></span>
+          </div>
+          <p class="hero-desc">
+            Software Engineering Lead/Manager at Elsevier with <strong>12+ years</strong> across frontend engineering, architecture, and people leadership. The manager who still codes, now leading how an entire engineering org adopts AI safely.
+          </p>
+          <p class="hero-location">📍 <span>Hoofddorp, Netherlands</span> &nbsp;·&nbsp; Currently at <span>Elsevier</span></p>
+          <div class="hero-ctas">
+            <a href="https://www.linkedin.com/in/kiran-kalyankumar-b4405359/" target="_blank" rel="noopener" class="btn-primary">
+              Connect on LinkedIn ↗
+            </a>
+            <a href="https://github.com/kirankalyan5" target="_blank" rel="noopener" class="btn-secondary">
+              GitHub Profile
+            </a>
+            <a href="./assets/Kiran_KalyanKumar_Resume.pdf" download="Kiran_KalyanKumar_Resume.pdf" class="btn-download">↓ Resume PDF</a>
+          </div>
+          <div class="hero-socials">
+            <a href="https://github.com/kirankalyan5" target="_blank" rel="noopener">
+              ◆ github.com/kirankalyan5
+            </a>
+            <a href="mailto:kiransinbox1@gmail.com">
+              ✉ kiransinbox1@gmail.com
+            </a>
+          </div>
         </div>
-        <!-- Experience Card 2 -->
-        <div class="p-6 bg-gray-800 rounded-lg hover-scale">
-          <h3 class="text-2xl font-bold text-white">Principal Software Engineer</h3>
-          <p class="text-gray-400">Elsevier | Amsterdam, Netherlands | 04/2022 - 10/2023</p>
-          <ul class="mt-4 list-disc list-inside">
-            <li>Spearheaded front-end domain architecture for multiple products.</li>
-            <li>Migrated large monolithic web applications to micro front-end architecture.</li>
-            <li>Collaborated with tech principals across Data, Backend, and Quality sectors.</li>
-          </ul>
+        <div class="hero-photo">
+          <img src="./assets/profile-photo.png" alt="Kiran KalyanKumar">
+          <div class="hero-photo-overlay"></div>
         </div>
       </div>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="mb-10 fade-in">
-      <h2 class="text-3xl font-bold text-white">Projects</h2>
-      <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-6">
-        <!-- Project Card 1 -->
-        <div class="p-6 bg-gray-800 rounded-lg hover-scale">
-          <h3 class="text-2xl font-bold text-white">React Native Segmented Control Tab</h3>
-          <p class="text-gray-400 mt-2">A customizable segmented control tab for React Native.</p>
-          <a href="https://github.com/kirankalyan5/react-native-segmented-control-tab" class="mt-4 inline-block text-blue-400 hover:underline">View on GitHub</a>
+    <!-- Impact Metrics -->
+    <section id="metrics">
+      <div class="metrics-grid">
+        <div class="metric-card reveal">
+          <div class="metric-number" data-target="12" data-suffix="+">0</div>
+          <div class="metric-label">Years of Engineering Experience</div>
+          <div class="metric-sub">// frontend → architecture → leadership</div>
         </div>
-        <!-- Project Card 2 -->
-        <div class="p-6 bg-gray-800 rounded-lg hover-scale">
-          <h3 class="text-2xl font-bold text-white">Micro Frontend Architecture</h3>
-          <p class="text-gray-400 mt-2">Migrated monolithic applications to micro frontend architecture.</p>
-          <a href="#" class="mt-4 inline-block text-blue-400 hover:underline">Learn More</a>
+        <div class="metric-card reveal reveal-delay-1">
+          <div class="metric-number" data-target="15" data-suffix="+">0</div>
+          <div class="metric-label">Repos on AI Governance Platform</div>
+          <div class="metric-sub">// 3–4 squads · de-facto org standard</div>
+        </div>
+        <div class="metric-card reveal reveal-delay-2">
+          <div class="metric-number" data-target="97" data-suffix="%">0</div>
+          <div class="metric-label">CI Build Time Reduction</div>
+          <div class="metric-sub">// 50 min → &lt;3 min · micro-frontend + Vite</div>
+        </div>
+        <div class="metric-card reveal reveal-delay-3">
+          <div class="metric-number" data-target="617" data-suffix="★">0</div>
+          <div class="metric-label">Open Source GitHub Stars</div>
+          <div class="metric-sub">// react-native-segmented-control-tab</div>
         </div>
       </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="mb-10 fade-in">
-      <h2 class="text-3xl font-bold text-white">Contact</h2>
-      <div class="mt-4 space-y-2">
-        <p>📍 Hoofddorp, Netherlands</p>
-        <p>Email: <a href="mailto:kiransinbox1@gmail.com" class="text-blue-400 hover:underline">kiransinbox1@gmail.com</a></p>
-        <p>GitHub: <a href="https://github.com/kirankalyan5" class="text-blue-400 hover:underline">github.com/kirankalyan5</a></p>
-        <p>LinkedIn: <a href="https://www.linkedin.com/in/kiran-kalyankumar-b4405359/" class="text-blue-400 hover:underline">linkedin.com/in/kiran-kalyankumar</a></p>
+    <!-- About -->
+    <section id="about">
+      <div class="section-label">// about</div>
+      <h2 class="section-title">The Manager Who <span class="accent">Still Codes</span></h2>
+      <div class="divider"></div>
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <p>
+            I bridge the gap between <strong>technical depth and engineering leadership</strong>, a combination that's genuinely rare. I can architect a micro-frontend platform in the morning and run a performance review in the afternoon.
+          </p>
+          <p>
+            At Elsevier, I lead multi-squad teams across Frontend, Backend, and QA, managing 8 engineers directly and 12 indirectly. Over the past year, I've moved into <strong>AI-augmented engineering leadership</strong>, building and owning the UI Centre of Excellence's centralised AI governance platform, now consumed by 15+ repos across 3 to 4 squads.
+          </p>
+          <p>
+            My leadership philosophy: <strong>psychological safety, genuine 1:1s, and measurable outcomes</strong>. My Officevibe engagement scores stay consistently above 8.5, with relationship-with-manager scores above 9.0.
+          </p>
+          <div class="about-callout">
+            "A technically strong manager who can go deep into code and lead people and delivery. Now the leader defining how an entire engineering org adopts AI safely."
+          </div>
+        </div>
+        <div class="about-highlights reveal reveal-delay-1">
+          <div class="highlight-item">
+            <div class="highlight-icon">🏗️</div>
+            <div class="highlight-content">
+              <strong>Architecture Authority</strong>
+              <span>Micro-frontends, BFF, Module Federation and Turborepo in production at scale with millions of users</span>
+            </div>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-icon">🤖</div>
+            <div class="highlight-content">
+              <strong>AI Governance Pioneer</strong>
+              <span>Built org-wide AI platform: ~30 skills, OWASP + WCAG guardrails, tool-agnostic across Claude / Copilot / Codex</span>
+            </div>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-icon">👥</div>
+            <div class="highlight-content">
+              <strong>People-First Leader</strong>
+              <span>4–5 engineers promoted post-mentoring · 2 direct reports promoted · 9.0+ manager relationship score</span>
+            </div>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-icon">🚀</div>
+            <div class="highlight-content">
+              <strong>Delivery at Scale</strong>
+              <span>1,500+ downstream app integrations · datasets up to hundreds of millions of records · 97% CI improvement</span>
+            </div>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-icon">📦</div>
+            <div class="highlight-content">
+              <strong>Open Source Author</strong>
+              <span>617 stars · 116 forks · react-native-segmented-control-tab, widely adopted in RN community</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+      <div class="section-label">// skills</div>
+      <h2 class="section-title">Technical <span class="accent">Expertise</span></h2>
+      <div class="divider"></div>
+      <p class="section-subtitle">12+ years of hands-on production experience across the full stack, from pixel-perfect UIs to cloud infrastructure.</p>
+      <div class="skills-grid">
+        <div class="skill-group reveal">
+          <div class="skill-group-label">★ Expert: Frontend Engineering</div>
+          <div class="skill-tags">
+            <span class="skill-tag">React 18 + TypeScript</span>
+            <span class="skill-tag">GraphQL / Apollo</span>
+            <span class="skill-tag">Redux Toolkit</span>
+            <span class="skill-tag">Module Federation</span>
+            <span class="skill-tag">Micro-Frontend Architecture</span>
+            <span class="skill-tag">Vite / Webpack</span>
+            <span class="skill-tag">Tailwind CSS</span>
+            <span class="skill-tag">SASS / CSS Modules</span>
+          </div>
+        </div>
+        <div class="skill-group reveal reveal-delay-1">
+          <div class="skill-group-label">★ Expert: Engineering Leadership</div>
+          <div class="skill-tags">
+            <span class="skill-tag">Multi-squad Management</span>
+            <span class="skill-tag">Hiring &amp; Interviewing</span>
+            <span class="skill-tag">Performance Management</span>
+            <span class="skill-tag">Mentorship</span>
+            <span class="skill-tag">Agile / Scrum Delivery</span>
+            <span class="skill-tag">Cross-functional Alignment</span>
+            <span class="skill-tag">ADR / Technical Design</span>
+          </div>
+        </div>
+        <div class="skill-group reveal reveal-delay-2">
+          <div class="skill-group-label">★ Expert: AI &amp; Platform Engineering</div>
+          <div class="skill-tags">
+            <span class="skill-tag">AI Governance Platform Design</span>
+            <span class="skill-tag">Claude Code / GitHub Copilot</span>
+            <span class="skill-tag">MCP Tooling</span>
+            <span class="skill-tag">Agentic Workflows</span>
+            <span class="skill-tag">OWASP / WCAG 2.2 Standards</span>
+            <span class="skill-tag">Spec-Driven Development</span>
+          </div>
+        </div>
+        <div class="skill-group reveal">
+          <div class="skill-group-label">◆ Proficient: Infrastructure &amp; Cloud</div>
+          <div class="skill-tags">
+            <span class="skill-tag">AWS (S3, CloudFront, Lambda)</span>
+            <span class="skill-tag">AWS (API Gateway, ECR, EKS)</span>
+            <span class="skill-tag">Kubernetes</span>
+            <span class="skill-tag">Jenkins / GitLab CI</span>
+            <span class="skill-tag">GitHub Actions</span>
+            <span class="skill-tag">TeamCity</span>
+            <span class="skill-tag">Docker</span>
+          </div>
+        </div>
+        <div class="skill-group reveal reveal-delay-1">
+          <div class="skill-group-label">◆ Proficient: Testing &amp; Quality</div>
+          <div class="skill-tags">
+            <span class="skill-tag">Vitest</span>
+            <span class="skill-tag">Jest</span>
+            <span class="skill-tag">React Testing Library</span>
+            <span class="skill-tag">MSW</span>
+            <span class="skill-tag">TestCafe</span>
+            <span class="skill-tag">Playwright</span>
+            <span class="skill-tag">Appium / Selenium</span>
+          </div>
+        </div>
+        <div class="skill-group reveal reveal-delay-2">
+          <div class="skill-group-label">◆ Proficient: Mobile &amp; Tools</div>
+          <div class="skill-tags">
+            <span class="skill-tag">React Native (iOS + Android)</span>
+            <span class="skill-tag">NodeJS / Express</span>
+            <span class="skill-tag">Turborepo / pnpm</span>
+            <span class="skill-tag">Rollup</span>
+            <span class="skill-tag">Figma</span>
+            <span class="skill-tag">NewRelic</span>
+            <span class="skill-tag">SonarQube</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience">
+      <div class="section-label">// experience</div>
+      <h2 class="section-title">Work <span class="accent">History</span></h2>
+      <div class="divider"></div>
+      <p class="section-subtitle">12+ years from individual contributor to multi-squad engineering lead, at companies that ship to millions.</p>
+
+      <div class="experience-timeline">
+
+        <!-- Elsevier: Lead/Manager -->
+        <div class="exp-item current reveal">
+          <div class="exp-card">
+            <div class="exp-header">
+              <div>
+                <div class="exp-title">
+                  Software Engineering Lead / Manager
+                  <span class="exp-badge badge-current">● Current</span>
+                </div>
+                <div class="exp-company">Elsevier · Amsterdam, Netherlands</div>
+              </div>
+              <div class="exp-meta">
+                <div class="exp-period">10/2023 – Present</div>
+                <div class="exp-location">Netherlands</div>
+              </div>
+            </div>
+            <ul class="exp-bullets">
+              <li>Manage <strong>8 engineers directly, 12 indirectly</strong> across 2 squads (Frontend, Backend, QA, UX) as squad lead and people manager for Squad 1, and matrix people manager for Squad 2</li>
+              <li>Architected and delivered <strong>DP-Nexus</strong>, a module-federated micro-frontend platform (host shell and 5 remotes) for Elsevier's research data pipeline, handling datasets up to <strong>hundreds of millions of records</strong></li>
+              <li>Built and own <strong>dp-ui-coe-ai-governance</strong>, a centralised AI governance platform consumed by <strong>15+ repos across 3 to 4 squads</strong>, with a three-layer override model, around 30 reusable AI skills, covering multiple stacks (React, Java, Scala, Python, Terraform) and working across Claude Code, GitHub Copilot and OpenAI Codex</li>
+              <li>Reduced CI build time from <strong>50 minutes → under 3 minutes (97% improvement)</strong> via micro-frontend + Vite migration</li>
+              <li>Migrated legacy UI app integrated by <strong>1,500+ downstream applications</strong> to modern stack with zero disruption</li>
+              <li>Hired <strong>3–4 engineers</strong> across disciplines; co-built structured interview rubric with TA team</li>
+              <li>Promoted <strong>2 direct reports</strong>; mentored 4–5 engineers who subsequently received promotions</li>
+              <li>Consistent Officevibe scores: <strong>8.5+ overall · 9.0+ relationship-with-manager</strong></li>
+            </ul>
+            <div class="exp-tech">
+              <span class="tech-pill">React 18</span><span class="tech-pill">TypeScript</span><span class="tech-pill">Module Federation</span>
+              <span class="tech-pill">Turborepo</span><span class="tech-pill">GraphQL/Apollo</span><span class="tech-pill">Vitest/RTL</span>
+              <span class="tech-pill">MSW</span><span class="tech-pill">AWS</span><span class="tech-pill">Kubernetes</span>
+              <span class="tech-pill">Claude Code</span><span class="tech-pill">GitHub Copilot</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Elsevier: Principal -->
+        <div class="exp-item reveal">
+          <div class="exp-card">
+            <div class="exp-header">
+              <div>
+                <div class="exp-title">Principal Software Engineer</div>
+                <div class="exp-company">Elsevier · Amsterdam, Netherlands</div>
+              </div>
+              <div class="exp-meta">
+                <div class="exp-period">04/2022 – 10/2023</div>
+                <div class="exp-location">Netherlands</div>
+              </div>
+            </div>
+            <ul class="exp-bullets">
+              <li>Led migration of a large monolithic frontend into <strong>5 domain-split micro-frontend applications</strong>, improving deployment independence and team autonomy</li>
+              <li>Architected and built a <strong>config-driven micro-frontend widget library</strong> adopted by 3 major Elsevier products serving <strong>millions of users</strong>, still in active production today</li>
+              <li>Ran POCs introducing new tech stacks; mentored frontend engineers via pair programming</li>
+              <li>Engaged in architectural discussions with tech principals across Data, Backend, and Quality</li>
+            </ul>
+            <div class="exp-tech">
+              <span class="tech-pill">React</span><span class="tech-pill">TypeScript</span><span class="tech-pill">GraphQL</span>
+              <span class="tech-pill">Vite</span><span class="tech-pill">Webpack</span><span class="tech-pill">AWS</span><span class="tech-pill">Kubernetes</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Elsevier: Senior -->
+        <div class="exp-item reveal">
+          <div class="exp-card">
+            <div class="exp-header">
+              <div>
+                <div class="exp-title">Senior Software Engineer</div>
+                <div class="exp-company">Elsevier · Amsterdam, Netherlands</div>
+              </div>
+              <div class="exp-meta">
+                <div class="exp-period">03/2019 – 04/2022</div>
+                <div class="exp-location">Netherlands</div>
+              </div>
+            </div>
+            <ul class="exp-bullets">
+              <li>Built front-end infrastructure from scratch for a greenfield project (internal tooling + customer-facing product)</li>
+              <li>Created micro-frontend library and reusable packages later adopted by <strong>3 major products (millions of users)</strong></li>
+              <li>Designed reusable component patterns; ran POCs, workshops, and brown bags; led PR reviews and Scrum ceremonies</li>
+            </ul>
+            <div class="exp-tech">
+              <span class="tech-pill">React</span><span class="tech-pill">TypeScript</span><span class="tech-pill">Redux</span>
+              <span class="tech-pill">GraphQL</span><span class="tech-pill">Webpack</span><span class="tech-pill">AWS</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- HCL / ING -->
+        <div class="exp-item reveal">
+          <div class="exp-card">
+            <div class="exp-header">
+              <div>
+                <div class="exp-title">Lead Consultant / Senior Dev Engineer</div>
+                <div class="exp-company">HCL Technologies BV · for ING Bank · Amsterdam, Netherlands</div>
+              </div>
+              <div class="exp-meta">
+                <div class="exp-period">02/2018 – 02/2019</div>
+                <div class="exp-location">Netherlands</div>
+              </div>
+            </div>
+            <ul class="exp-bullets">
+              <li>Built and shipped the <strong>ING Beleggen</strong> investment app for iOS and Android using React Native, reaching <strong>100,000+ users</strong></li>
+              <li>Maintained code quality through unit, integration, and snapshot testing</li>
+              <li>Collaborated with UX and Product Owners on user-centric investment features</li>
+            </ul>
+            <div class="exp-tech">
+              <span class="tech-pill">React Native</span><span class="tech-pill">React JS</span><span class="tech-pill">MobX</span>
+              <span class="tech-pill">Jest</span><span class="tech-pill">REST APIs</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ThoughtWorks -->
+        <div class="exp-item reveal">
+          <div class="exp-card">
+            <div class="exp-header">
+              <div>
+                <div class="exp-title">Senior UI Consultant</div>
+                <div class="exp-company">ThoughtWorks · Bangalore, India</div>
+              </div>
+              <div class="exp-meta">
+                <div class="exp-period">07/2015 – 02/2018</div>
+                <div class="exp-location">India</div>
+              </div>
+            </div>
+            <ul class="exp-bullets">
+              <li><strong>UK's largest travel retailer:</strong> Built a single-codebase web and mobile app skinned into <strong>9 different themes for 9 UK train operating companies</strong>. This is my proudest technical achievement, a perfect example of config-driven architecture done right</li>
+              <li><strong>European investment bank:</strong> Built responsive frontend application for a leading European investment bank</li>
+              <li>Led project architecture, guest checkout functionality, and reusable UI component library (used in responsive HTML emails)</li>
+            </ul>
+            <div class="exp-tech">
+              <span class="tech-pill">React JS</span><span class="tech-pill">React Native</span><span class="tech-pill">Redux</span>
+              <span class="tech-pill">AngularJS</span><span class="tech-pill">CSS Modules</span><span class="tech-pill">Appium</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Deloitte -->
+        <div class="exp-item reveal">
+          <div class="exp-card">
+            <div class="exp-header">
+              <div>
+                <div class="exp-title">Front-end Consultant</div>
+                <div class="exp-company">Deloitte Digital · Bangalore, India</div>
+              </div>
+              <div class="exp-meta">
+                <div class="exp-period">01/2014 – 07/2015</div>
+                <div class="exp-location">India</div>
+              </div>
+            </div>
+            <ul class="exp-bullets">
+              <li>Developed mobile app for a major US insurance retailer (iOS + Android via Titanium Appcelerator)</li>
+              <li>Built frontends for a multinational technology corporation and one of the largest US food &amp; beverage chains</li>
+            </ul>
+            <div class="exp-tech">
+              <span class="tech-pill">JavaScript</span><span class="tech-pill">AngularJS</span><span class="tech-pill">jQuery</span>
+              <span class="tech-pill">Titanium Appcelerator</span><span class="tech-pill">SASS</span><span class="tech-pill">Bootstrap</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+      <div class="section-label">// projects</div>
+      <h2 class="section-title">Notable <span class="accent">Work</span></h2>
+      <div class="divider"></div>
+      <p class="section-subtitle">Architecture decisions, open source, and platform-level work that had real impact at scale.</p>
+
+      <div class="projects-grid">
+
+        <!-- AI Governance Platform - featured -->
+        <div class="project-card featured reveal">
+          <div class="project-header">
+            <div class="project-icon">🤖</div>
+            <div class="project-links">
+              <span class="project-link">Internal @ Elsevier</span>
+            </div>
+          </div>
+          <div class="project-title">AI Governance Platform, UI Centre of Excellence</div>
+          <div class="project-desc">
+            A centralised, versioned AI governance platform and the single source of truth for AI-assisted development across the UI CoE. Built on a three-layer override architecture (Base, Stack, Repo) so universal rules, tech-specific conventions, and per-repo overrides all compose cleanly. Covers multiple stacks (React/TS, Java/Spring, Scala, Python, Terraform, Node) and works across Claude Code, GitHub Copilot, and OpenAI Codex. Ships around 30 reusable AI skills as slash commands, with OWASP, WCAG 2.2, and testing guardrails built in. One-command bootstrap with symlink distribution so updates propagate via a simple git pull.
+          </div>
+          <div class="project-stats">
+            <div class="project-stat">
+              <span class="project-stat-value">15+</span>
+              <span class="project-stat-label">Repos Consuming</span>
+            </div>
+            <div class="project-stat">
+              <span class="project-stat-value">3–4</span>
+              <span class="project-stat-label">Squads Adopted</span>
+            </div>
+            <div class="project-stat">
+              <span class="project-stat-value">~30</span>
+              <span class="project-stat-label">AI Skills Shipped</span>
+            </div>
+            <div class="project-stat">
+              <span class="project-stat-value">6+</span>
+              <span class="project-stat-label">Tech Stacks Covered</span>
+            </div>
+          </div>
+          <div class="project-tags">
+            <span class="project-tag">Claude Code</span><span class="project-tag">GitHub Copilot</span>
+            <span class="project-tag">OpenAI Codex</span><span class="project-tag">OWASP</span>
+            <span class="project-tag">WCAG 2.2</span><span class="project-tag">Architecture</span>
+          </div>
+        </div>
+
+        <!-- DP-Nexus -->
+        <div class="project-card reveal">
+          <div class="project-header">
+            <div class="project-icon">📊</div>
+            <span class="project-link">Internal @ Elsevier</span>
+          </div>
+          <div class="project-title">DP-Nexus: Research Data Pipeline Platform</div>
+          <div class="project-desc">
+            Operational frontend for Elsevier's research data pipeline. Module-federated micro-frontend (host shell + 5 remotes) where operations teams monitor data flow, trace lineage, triage quality with Red/Amber/Green status, and promote datasets. Config-driven low-code content explorer backed by Elasticsearch. Architected from the ground up.
+          </div>
+          <div class="project-stats">
+            <div class="project-stat">
+              <span class="project-stat-value">100M+</span>
+              <span class="project-stat-label">Records Scale</span>
+            </div>
+            <div class="project-stat">
+              <span class="project-stat-value">5</span>
+              <span class="project-stat-label">MFE Remotes</span>
+            </div>
+            <div class="project-stat">
+              <span class="project-stat-value">80%</span>
+              <span class="project-stat-label">Test Coverage Gate</span>
+            </div>
+          </div>
+          <div class="project-tags">
+            <span class="project-tag">React 18</span><span class="project-tag">Module Federation</span>
+            <span class="project-tag">Turborepo</span><span class="project-tag">Elasticsearch</span><span class="project-tag">Azure AD</span>
+          </div>
+        </div>
+
+        <!-- Open source -->
+        <div class="project-card reveal reveal-delay-1">
+          <div class="project-header">
+            <div class="project-icon">📦</div>
+            <a href="https://github.com/kirankalyan5/react-native-segmented-control-tab" target="_blank" rel="noopener" class="project-link">View on GitHub ↗</a>
+          </div>
+          <div class="project-title">react-native-segmented-control-tab</div>
+          <div class="project-desc">
+            Customisable segmented control tab component for React Native, supporting both iOS and Android. Widely adopted in the React Native open source community and one of the most popular components of its kind.
+          </div>
+          <div class="project-stats">
+            <div class="project-stat">
+              <span class="project-stat-value">617★</span>
+              <span class="project-stat-label">GitHub Stars</span>
+            </div>
+            <div class="project-stat">
+              <span class="project-stat-value">116</span>
+              <span class="project-stat-label">Forks</span>
+            </div>
+          </div>
+          <div class="project-tags">
+            <span class="project-tag">React Native</span><span class="project-tag">iOS</span><span class="project-tag">Android</span><span class="project-tag">Open Source</span>
+          </div>
+        </div>
+
+        <!-- Themeable Travel App -->
+        <div class="project-card reveal reveal-delay-2">
+          <div class="project-header">
+            <div class="project-icon">🚂</div>
+            <span class="project-link">ThoughtWorks Client</span>
+          </div>
+          <div class="project-title">Themeable Travel App: 9 Brands, 1 Codebase</div>
+          <div class="project-desc">
+            Built a highly themeable web and mobile application for the UK's largest travel retailer. A single codebase skinned into 9 different themes for 9 UK train operating companies. A showcase of config-driven architecture and component abstraction at scale, and my personal proudest technical achievement.
+          </div>
+          <div class="project-stats">
+            <div class="project-stat">
+              <span class="project-stat-value">9</span>
+              <span class="project-stat-label">Train Operating Cos</span>
+            </div>
+            <div class="project-stat">
+              <span class="project-stat-value">1</span>
+              <span class="project-stat-label">Codebase</span>
+            </div>
+          </div>
+          <div class="project-tags">
+            <span class="project-tag">React JS</span><span class="project-tag">React Native</span>
+            <span class="project-tag">Config-Driven</span><span class="project-tag">Theme System</span>
+          </div>
+        </div>
+
+        <!-- Widget Library -->
+        <div class="project-card reveal">
+          <div class="project-header">
+            <div class="project-icon">🧩</div>
+            <span class="project-link">Internal @ Elsevier</span>
+          </div>
+          <div class="project-title">Micro-Frontend Widget Library</div>
+          <div class="project-desc">
+            Config-driven micro-frontend widget library architected at Elsevier, adopted by 3 major products serving millions of users. Embeddable across host applications without coupling, and still in active production use today.
+          </div>
+          <div class="project-stats">
+            <div class="project-stat">
+              <span class="project-stat-value">3</span>
+              <span class="project-stat-label">Major Products</span>
+            </div>
+            <div class="project-stat">
+              <span class="project-stat-value">M+</span>
+              <span class="project-stat-label">End Users</span>
+            </div>
+          </div>
+          <div class="project-tags">
+            <span class="project-tag">React</span><span class="project-tag">TypeScript</span>
+            <span class="project-tag">Micro-Frontend</span><span class="project-tag">Config-Driven</span>
+          </div>
+        </div>
+
+        <!-- ING App -->
+        <div class="project-card reveal reveal-delay-1">
+          <div class="project-header">
+            <div class="project-icon">💰</div>
+            <span class="project-link">HCL × ING Bank</span>
+          </div>
+          <div class="project-title">ING Beleggen: Investment App</div>
+          <div class="project-desc">
+            Consumer-facing investment app for ING Bank, built with React Native and shipped to the App Store and Google Play. Over 100,000 users trust it for their investment portfolio management.
+          </div>
+          <div class="project-stats">
+            <div class="project-stat">
+              <span class="project-stat-value">100K+</span>
+              <span class="project-stat-label">Users</span>
+            </div>
+            <div class="project-stat">
+              <span class="project-stat-value">iOS+Android</span>
+              <span class="project-stat-label">Platforms</span>
+            </div>
+          </div>
+          <div class="project-tags">
+            <span class="project-tag">React Native</span><span class="tech-pill">MobX</span>
+            <span class="project-tag">iOS</span><span class="project-tag">Android</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Achievements -->
+    <section id="achievements">
+      <div class="section-label">// metrics</div>
+      <h2 class="section-title">Impact <span class="accent">at a Glance</span></h2>
+      <div class="divider"></div>
+      <div class="achievements-table-wrapper reveal">
+        <table class="achievements-table">
+          <thead>
+            <tr>
+              <th>Achievement</th>
+              <th>Metric</th>
+              <th>Context</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="achievement-name">AI governance platform adoption</td>
+              <td class="metric-value">15+ repos · 3–4 squads</td>
+              <td>De-facto AI engineering standard for UI CoE · still growing</td>
+            </tr>
+            <tr>
+              <td class="achievement-name">CI build time reduction</td>
+              <td class="metric-value">50 min → &lt;3 min (97%)</td>
+              <td>Micro-frontend architecture + Vite migration @ Elsevier</td>
+            </tr>
+            <tr>
+              <td class="achievement-name">Legacy app migration</td>
+              <td class="metric-value">1,500+ downstream integrations</td>
+              <td>End-of-life app modernised with zero customer disruption</td>
+            </tr>
+            <tr>
+              <td class="achievement-name">Micro-frontend widget library</td>
+              <td class="metric-value">Millions of end users</td>
+              <td>Used by 3 major Elsevier products · active production</td>
+            </tr>
+            <tr>
+              <td class="achievement-name">AWS cost optimisation</td>
+              <td class="metric-value">Significant operational savings</td>
+              <td>Elastic index optimisation + serverless FE migration</td>
+            </tr>
+            <tr>
+              <td class="achievement-name">Data pipeline scale</td>
+              <td class="metric-value">100M+ records</td>
+              <td>DP-Nexus platform handles subscriptions at this scale</td>
+            </tr>
+            <tr>
+              <td class="achievement-name">ING Beleggen mobile app</td>
+              <td class="metric-value">100,000+ users</td>
+              <td>React Native · iOS + Android</td>
+            </tr>
+            <tr>
+              <td class="achievement-name">Themeable travel app</td>
+              <td class="metric-value">9 train operating companies</td>
+              <td>Single codebase · 9 themes · UK's largest travel retailer</td>
+            </tr>
+            <tr>
+              <td class="achievement-name">Open source library</td>
+              <td class="metric-value">617 stars · 116 forks</td>
+              <td>react-native-segmented-control-tab</td>
+            </tr>
+            <tr>
+              <td class="achievement-name">Team engagement</td>
+              <td class="metric-value">8.5+ Officevibe score</td>
+              <td>Consistent across tenure as Engineering Manager</td>
+            </tr>
+            <tr>
+              <td class="achievement-name">Manager relationship score</td>
+              <td class="metric-value">9.0+ Officevibe score</td>
+              <td>Team-reported · bi-weekly 1:1s · psychological safety culture</td>
+            </tr>
+            <tr>
+              <td class="achievement-name">Engineers mentored → promoted</td>
+              <td class="metric-value">4–5 promotions</td>
+              <td>Engineers promoted after direct mentorship</td>
+            </tr>
+            <tr>
+              <td class="achievement-name">Direct reports promoted</td>
+              <td class="metric-value">2 promotions given</td>
+              <td>Under direct management</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <div class="section-label">// contact</div>
+      <h2 class="section-title">Let's <span class="accent">Connect</span></h2>
+      <div class="divider"></div>
+      <div class="contact-grid">
+        <div class="contact-info reveal">
+          <a href="mailto:kiransinbox1@gmail.com" class="contact-link">
+            <div class="contact-link-icon email">✉️</div>
+            <div class="contact-link-content">
+              <strong>kiransinbox1@gmail.com</strong>
+              <span>Best way to reach me</span>
+            </div>
+          </a>
+          <a href="https://www.linkedin.com/in/kiran-kalyankumar-b4405359/" target="_blank" rel="noopener" class="contact-link">
+            <div class="contact-link-icon linkedin">💼</div>
+            <div class="contact-link-content">
+              <strong>LinkedIn</strong>
+              <span>linkedin.com/in/kiran-kalyankumar</span>
+            </div>
+          </a>
+          <a href="https://github.com/kirankalyan5" target="_blank" rel="noopener" class="contact-link">
+            <div class="contact-link-icon github">⬡</div>
+            <div class="contact-link-content">
+              <strong>GitHub</strong>
+              <span>github.com/kirankalyan5</span>
+            </div>
+          </a>
+          <div class="contact-link" style="cursor: default;">
+            <div class="contact-link-icon location">📍</div>
+            <div class="contact-link-content">
+              <strong>Hoofddorp, Netherlands</strong>
+              <span>Open to remote &amp; Amsterdam-area roles</span>
+            </div>
+          </div>
+        </div>
+        <div class="contact-card reveal reveal-delay-1">
+          <h3>Open to the Right Opportunity</h3>
+          <p>
+            I'm selectively open to conversations about senior engineering leadership, staff/principal IC roles, and freelance engagements. If you're building something ambitious and need someone who can lead, architect, and ship, I'd love to hear from you.
+          </p>
+          <div class="target-roles">
+            <div class="role-tag">
+              <div class="dot high"></div>
+              Engineering Manager / Software Engineering Manager
+            </div>
+            <div class="role-tag">
+              <div class="dot medium"></div>
+              Staff Engineer / Principal Frontend Engineer
+            </div>
+            <div class="role-tag">
+              <div class="dot low"></div>
+              Senior Frontend Contractor (Freelance)
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   </main>
 
-  <!-- Footer -->
-  <footer class="bg-gray-800 p-4">
-    <p class="text-center text-gray-500">© 2025 Kiran Kalyankumar. All rights reserved.</p>
+  <footer>
+    <p>Built by Kiran KalyanKumar · <a href="https://github.com/kirankalyan5/kirankalyan5.github.io" target="_blank" rel="noopener">View Source</a> · © 2025</p>
   </footer>
 
-  <!-- Framer Motion Script -->
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const fadeElements = document.querySelectorAll(".fade-in");
-      fadeElements.forEach((el, index) => {
-        setTimeout(() => {
-          el.style.opacity = 1;
-        }, index * 200); // Staggered fade-in effect
-      });
+    // Theme system: localStorage → system preference → default dark
+    (function() {
+      const stored = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.dataset.theme = stored ?? (prefersDark ? 'dark' : 'light');
+    })();
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const toggle = document.getElementById('theme-toggle');
+      if (toggle) {
+        toggle.addEventListener('click', function() {
+          const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+          document.documentElement.dataset.theme = next;
+          localStorage.setItem('theme', next);
+        });
+      }
     });
+
+    // Typewriter effect
+    const roles = [
+      'Software Engineering Lead',
+      'AI-Augmented Engineering Leader',
+      'The Manager Who Still Codes',
+      'Frontend Architect',
+      'Multi-Squad Engineering Manager'
+    ];
+    let roleIdx = 0, charIdx = 0, deleting = false;
+    const el = document.getElementById('typewriter-text');
+
+    function type() {
+      const current = roles[roleIdx];
+      if (!deleting) {
+        el.textContent = current.slice(0, charIdx + 1);
+        charIdx++;
+        if (charIdx === current.length) {
+          deleting = true;
+          setTimeout(type, 2200);
+          return;
+        }
+      } else {
+        el.textContent = current.slice(0, charIdx - 1);
+        charIdx--;
+        if (charIdx === 0) {
+          deleting = false;
+          roleIdx = (roleIdx + 1) % roles.length;
+        }
+      }
+      setTimeout(type, deleting ? 40 : 65);
+    }
+    type();
+
+    // Scroll reveal
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          revealObserver.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // Counter animation
+    function animateCounter(el) {
+      const target = parseInt(el.dataset.target);
+      const suffix = el.dataset.suffix || '';
+      const duration = 1800;
+      const startTime = performance.now();
+      function update(now) {
+        const progress = Math.min((now - startTime) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const value = Math.floor(eased * target);
+        el.textContent = value + suffix;
+        if (progress < 1) requestAnimationFrame(update);
+        else el.textContent = target + suffix;
+      }
+      requestAnimationFrame(update);
+    }
+
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          animateCounter(e.target);
+          counterObserver.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.metric-number[data-target]').forEach(el => counterObserver.observe(el));
+
+    // Nav scroll effect
+    const nav = document.querySelector('nav');
+    window.addEventListener('scroll', () => {
+      nav.style.borderBottomColor = window.scrollY > 50
+        ? 'rgba(0, 212, 255, 0.12)'
+        : 'rgba(0, 212, 255, 0.08)';
+    }, { passive: true });
+
+    // Active nav link on scroll
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          navLinks.forEach(link => {
+            link.style.color = link.getAttribute('href') === '#' + e.target.id
+              ? 'var(--accent-cyan)' : '';
+          });
+        }
+      });
+    }, { threshold: 0.4 });
+    sections.forEach(s => sectionObserver.observe(s));
   </script>
+
+  <!-- ═══════════════════════════════════════════════════
+       PRINT-ONLY RESUME — hidden on screen, clean PDF on print
+       Update this alongside the main page content
+       ═══════════════════════════════════════════════════ -->
+  <div id="print-resume">
+
+    <div class="pr-header">
+      <div class="pr-name">Kiran KalyanKumar</div>
+      <div class="pr-role">Software Engineering Lead / Manager</div>
+      <div class="pr-contact">
+        <span>📍 Hoofddorp, Netherlands</span>
+        <a href="mailto:kiransinbox1@gmail.com">kiransinbox1@gmail.com</a>
+        <span>+31 684590325</span>
+        <a href="https://linkedin.com/in/kiran-kalyankumar-b4405359">linkedin.com/in/kiran-kalyankumar</a>
+        <a href="https://github.com/kirankalyan5">github.com/kirankalyan5</a>
+      </div>
+    </div>
+
+    <div class="pr-section">
+      <div class="pr-section-title">Summary</div>
+      <div class="pr-summary">
+        12+ years across frontend engineering, architecture, and engineering leadership. Currently Software Engineering Lead/Manager at Elsevier managing multi-squad teams (Frontend, Backend, QA). The technically strong manager who can go deep into code and lead people and delivery. Built and owns the UI Centre of Excellence's centralised AI governance platform, consumed by 15+ repos across 3–4 squads. Consistent Officevibe engagement scores above 8.5 with relationship-with-manager above 9.0.
+      </div>
+    </div>
+
+    <div class="pr-section">
+      <div class="pr-section-title">Core Skills</div>
+      <div class="pr-skills">
+        <div><strong>Frontend:</strong> React 18 + TypeScript, GraphQL/Apollo, Redux Toolkit, Module Federation, Micro-frontend Architecture, Vite/Webpack, Tailwind/SASS</div>
+        <div><strong>Leadership:</strong> Multi-squad management, Hiring &amp; Interviewing, Performance Management, Mentorship, Agile Delivery, ADR / Technical Design</div>
+        <div><strong>AI &amp; Platform:</strong> AI Governance Platform Design, Claude Code, GitHub Copilot, MCP Tooling, Agentic Workflows, OWASP / WCAG 2.2</div>
+        <div><strong>Infrastructure:</strong> AWS (S3, CloudFront, Lambda, EKS), Kubernetes, GitHub Actions, Jenkins, Docker, Node.js/Express</div>
+        <div><strong>Testing:</strong> Vitest, Jest, React Testing Library, MSW, TestCafe, Playwright</div>
+        <div><strong>Mobile:</strong> React Native (iOS + Android, 100K+ users), Turborepo, pnpm</div>
+      </div>
+    </div>
+
+    <div class="pr-section">
+      <div class="pr-section-title">Experience</div>
+
+      <div class="pr-exp-item">
+        <div class="pr-exp-header">
+          <div>
+            <div class="pr-exp-title">Software Engineering Lead / Manager</div>
+            <div class="pr-exp-company">Elsevier · Amsterdam, Netherlands</div>
+          </div>
+          <div class="pr-exp-period">10/2023 – Present</div>
+        </div>
+        <ul class="pr-exp-bullets">
+          <li>Manage <strong>8 engineers directly, 12 indirectly</strong> across 2 squads (Frontend, Backend, QA, UX) as squad lead + people manager for Squad 1 and matrix people manager for Squad 2</li>
+          <li>Architected and delivered <strong>DP-Nexus</strong>, a module-federated micro-frontend platform (host + 5 remotes) handling datasets up to <strong>hundreds of millions of records</strong></li>
+          <li>Built and own <strong>dp-ui-coe-ai-governance</strong> — AI governance platform consumed by <strong>15+ repos across 3–4 squads</strong>; ~30 reusable AI skills, multi-stack (React, Java, Scala, Python, Terraform), works across Claude Code / GitHub Copilot / Codex</li>
+          <li>Reduced CI build time from <strong>50 minutes to under 3 minutes (97% improvement)</strong> via micro-frontend architecture and Vite migration</li>
+          <li>Migrated legacy UI app integrated by <strong>1,500+ downstream applications</strong> to modern stack with zero disruption</li>
+          <li>Hired 3–4 engineers; promoted 2 direct reports; mentored 4–5 engineers who subsequently received promotions</li>
+          <li>Officevibe scores: <strong>8.5+ overall · 9.0+ relationship-with-manager</strong></li>
+        </ul>
+      </div>
+
+      <div class="pr-exp-item">
+        <div class="pr-exp-header">
+          <div>
+            <div class="pr-exp-title">Principal Software Engineer</div>
+            <div class="pr-exp-company">Elsevier · Amsterdam, Netherlands</div>
+          </div>
+          <div class="pr-exp-period">04/2022 – 10/2023</div>
+        </div>
+        <ul class="pr-exp-bullets">
+          <li>Led migration of a large monolithic frontend into <strong>5 domain-split micro-frontend applications</strong>, improving deployment independence and team autonomy</li>
+          <li>Architected and built a <strong>config-driven micro-frontend widget library</strong> adopted by 3 major products serving <strong>millions of users</strong>, still in active production</li>
+          <li>Mentored frontend engineers via pair programming; engaged in architectural discussions across Data, Backend, and Quality</li>
+        </ul>
+      </div>
+
+      <div class="pr-exp-item">
+        <div class="pr-exp-header">
+          <div>
+            <div class="pr-exp-title">Senior Software Engineer</div>
+            <div class="pr-exp-company">Elsevier · Amsterdam, Netherlands</div>
+          </div>
+          <div class="pr-exp-period">03/2019 – 04/2022</div>
+        </div>
+        <ul class="pr-exp-bullets">
+          <li>Built front-end infrastructure from scratch for a greenfield project (internal tooling + customer-facing product)</li>
+          <li>Created micro-frontend library and reusable packages later adopted by 3 major products serving millions of users</li>
+        </ul>
+      </div>
+
+      <div class="pr-exp-item">
+        <div class="pr-exp-header">
+          <div>
+            <div class="pr-exp-title">Lead Consultant / Senior Dev Engineer</div>
+            <div class="pr-exp-company">HCL Technologies BV (for ING Bank) · Amsterdam, Netherlands</div>
+          </div>
+          <div class="pr-exp-period">02/2018 – 02/2019</div>
+        </div>
+        <ul class="pr-exp-bullets">
+          <li>Built and shipped the <strong>ING Beleggen</strong> investment app for iOS and Android using React Native — <strong>100,000+ users</strong></li>
+        </ul>
+      </div>
+
+      <div class="pr-exp-item">
+        <div class="pr-exp-header">
+          <div>
+            <div class="pr-exp-title">Senior UI Consultant</div>
+            <div class="pr-exp-company">ThoughtWorks · Bangalore, India</div>
+          </div>
+          <div class="pr-exp-period">07/2015 – 02/2018</div>
+        </div>
+        <ul class="pr-exp-bullets">
+          <li>Built a single-codebase web and mobile app skinned into <strong>9 themes for 9 UK train operating companies</strong> (UK's largest travel retailer)</li>
+          <li>Built responsive frontend for a leading European investment bank</li>
+        </ul>
+      </div>
+
+      <div class="pr-exp-item">
+        <div class="pr-exp-header">
+          <div>
+            <div class="pr-exp-title">Front-end Consultant</div>
+            <div class="pr-exp-company">Deloitte Digital · Bangalore, India</div>
+          </div>
+          <div class="pr-exp-period">01/2014 – 07/2015</div>
+        </div>
+        <ul class="pr-exp-bullets">
+          <li>Developed mobile and web frontends for a major US insurance retailer, multinational technology corporation, and US food &amp; beverage chain</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pr-section">
+      <div class="pr-section-title">Notable Projects &amp; Open Source</div>
+      <div class="pr-projects">
+        <div>
+          <div class="pr-project-name">react-native-segmented-control-tab</div>
+          <div class="pr-project-desc">Open source React Native component · <strong>617 GitHub stars · 116 forks</strong> · github.com/kirankalyan5/react-native-segmented-control-tab</div>
+        </div>
+        <div>
+          <div class="pr-project-name">AI Governance Platform (Elsevier CoE)</div>
+          <div class="pr-project-desc">Three-layer override model, ~30 AI skills, multi-stack, tool-agnostic · 15+ repos consuming · de-facto org standard</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pr-section">
+      <div class="pr-section-title">Education</div>
+      <div class="pr-edu">
+        <div><strong>Bachelor of Engineering, Computer Science</strong> · Visvesvaraya Technological University</div>
+        <span>08/2009 – 07/2013</span>
+      </div>
+    </div>
+
+  </div>
 </body>
 </html>
